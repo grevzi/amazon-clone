@@ -25,13 +25,13 @@ const Product = ({id, title, price, description, category, image}) => {
 
             <p className="my-3">{title}</p>
 
-            {/*<div className="flex">*/}
-            {/*    {Array(rating).fill().map((_, i) => (*/}
-            {/*        <StarIcon*/}
-            {/*            key={i}*/}
-            {/*            className="h-5 text-yellow-500" />*/}
-            {/*    ))}*/}
-            {/*</div>*/}
+            <div className="flex">
+                {Array(rating).fill().map((_, i) => (
+                    <StarIcon
+                        key={i}
+                        className="h-5 text-yellow-500" />
+                ))}
+            </div>
 
             <p className="text-xs my-2 line-clamp-2">{description}</p>
 
@@ -39,10 +39,10 @@ const Product = ({id, title, price, description, category, image}) => {
                 <Currency quantity={price} currency="GBP" />
             </div>
 
-            {/*{hasPime && <div className="flex items-center space-x-2 -mt-5">*/}
-            {/*    <img className="w-12" src="https://links.papareact.com/fdw" alt="prime"/>*/}
-            {/*    <p className="text-xs text-gray-500">FREE Next-day Delivery</p>*/}
-            {/*</div>}*/}
+            {hasPime && <div className="flex items-center space-x-2 -mt-5">
+                <img className="w-12" src="https://links.papareact.com/fdw" alt="prime"/>
+                <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
+            </div>}
 
             <button type="button" className="mt-auto button">Add to Basket</button>
 
