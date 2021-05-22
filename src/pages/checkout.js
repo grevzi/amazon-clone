@@ -72,7 +72,7 @@ const Checkout = () => {
                     {itemsCount > 0 && (
                         <>
                             <h2 className="whitespace-nowrap">
-                                Sub Total ({itemsCount}) items
+                                Sub Total ({itemsCount}) items{" "}
                                 <span className="font-bold">
                                     <Currency quantity={itemsTotal} currency="GBP"/>
                                 </span>

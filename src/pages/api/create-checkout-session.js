@@ -3,8 +3,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 export default async (req, res) => {
     const {items, email} = req.body
 
-    console.log({items, email});
-
     const transformedItems = items.map(item => ({
         description: item.description,
         quantity: item.qty,
@@ -33,8 +31,6 @@ export default async (req, res) => {
             images: JSON.stringify(items.map(item => item.image))
         }
     })
-
-    console.log(session);
 
     res.status(200).json({id: session.id})
 }

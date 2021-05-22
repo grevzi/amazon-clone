@@ -3,12 +3,16 @@ import Header from "../components/Header";
 import {CheckCircleIcon} from "@heroicons/react/solid";
 import {useRouter} from "next/router";
 import {getSession} from "next-auth/client";
+import Head from "next/head";
 
 const success = ({session}) => {
     const router = useRouter()
 
     return (
         <div className="bg-gray-100 h-screen">
+            <Head>
+                <title>Success | Amazon 2.0</title>
+            </Head>
             <Header/>
             <main className="max-w-screen-lg mx-auto">
                 <div className="flex flex-col p-10 bg-white">
