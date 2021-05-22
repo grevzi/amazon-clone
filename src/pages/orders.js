@@ -4,10 +4,14 @@ import {getSession, useSession} from "next-auth/client";
 import db from "../../firebase";
 import moment from "moment";
 import Order from "../components/Order";
+import Head from "next/head";
 
 const Orders = ({orders, session}) => {
     return (
         <div className="bg-gray-100">
+            <Head>
+                <title>{session && `${session.user.name}'s`} Orders | Amazon 2.0</title>
+            </Head>
             <Header />
 
             <main className="mx-w-screen-lg mx-auto p-10">
