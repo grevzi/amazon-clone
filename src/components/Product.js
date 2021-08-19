@@ -4,11 +4,15 @@ import {StarIcon} from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 import {useDispatch} from "react-redux";
 import {addToBasket} from "../slices/basketSlice";
+import {useSession} from "next-auth/client";
+import {app} from "../../firebase";
+import axios from "axios";
 
 const MAX_RATING = 5
 const MIN_RATING = 1
 
 const Product = ({id, title, price, description, category, image, qty}) => {
+    const [session] = useSession()
     const dispatch = useDispatch()
 
     const [rating] = useState(
@@ -17,7 +21,12 @@ const Product = ({id, title, price, description, category, image, qty}) => {
 
     const [hasPrime] = useState(Math.random() < 0.5)
 
-    const addProductToBasket = () => {
+    const addProductToBasket = async () => {
+        const basket = JSON.parse(localStorage.getItem('basket'))
+        localStorage.setItem('basket', JSON.stringify([...basket, id]));
+
+        console.log(`SUCCESS: basket product ${id} had been added to the DB`);
+
         dispatch(addToBasket({
             id,
             title,
@@ -29,6 +38,8 @@ const Product = ({id, title, price, description, category, image, qty}) => {
             rating,
             hasPrime
         }))
+
+
     }
 
     return (
